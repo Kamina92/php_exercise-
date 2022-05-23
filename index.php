@@ -41,7 +41,28 @@
 
 // $BMI= $weigth/ ($heigth*$heigth);
 
-// echo "$BMI"
+// switch ($BMI) {
+//     case ($BMI < 16.5): echo "Il tuo BMI è $BMI sei nella categoria Sottopeso severo";
+//         break;
+//     case ($BMI < 18.4 && $BMI >16.5): echo "Il tuo BMI è $BMI sei nella categoria Sottopeso";
+//         break;
+//     case ($BMI < 24.9 && $BMI >18.4): echo "Il tuo BMI è $BMI sei nella categoria Normale";
+//         break;
+//     case ($BMI < 30 && $BMI >25): echo "Il tuo BMI è $BMI sei nella categoria Sovrappeso";
+//         break;
+//     case ($BMI < 34.9 && $BMI >30.1): echo "Il tuo BMI è $BMI sei nella categoria Obesità primo grado";
+//         break;
+//     case ($BMI < 40 && $BMI >35): echo "Il tuo BMI è $BMI sei nella categoria Obesità secondo grado";
+//         break;
+//     case ($BMI > 40): echo "Il tuo BMI è $BMI sei nella categoria Obesità terzo grado";
+//         break;
+    
+//     default: echo "valore non corretto";
+        
+//         break;
+// }
+
+
 
 
 
