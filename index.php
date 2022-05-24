@@ -20,6 +20,7 @@
 // echo ("$final");
 
 
+
 // Creare un array di persone con nome, cognome e genere. Se il genere e’ M stampare “Buongiorno Sig.” e se e’ F stampare “Buongiorno Sig.ra”
 
 // $people = [
@@ -68,18 +69,38 @@
 
 // - Scrivere un programma che stampi in console tutti i numeri da uno a cento. Se il numero e’ multiplo di 3, non deve stampare il numero ma “PHP”; se multiplo di 5 deve stampare “JAVASCRIPT”; se multiplo di 3 e 5 (15) deve stampare “HACKADEMY43”;
 
-for ($i=1; $i<=100 ; $i++) { 
-    if($i%3 == 0 && $i%5 == 0){
-        echo "HACKADEMY43 \n";
-    } else if ($i%5 == 0){
-        echo "JAVASCRIPT \n";
-    } else if ($i%3 == 0){
-        echo "PHP \n";
-    } else {
-        echo "$i \n";
-    }
+// for ($i=1; $i<=100 ; $i++) { 
+//     if($i%3 == 0 && $i%5 == 0){
+//         echo "HACKADEMY43 \n";
+//     } else if ($i%5 == 0){
+//         echo "JAVASCRIPT \n";
+//     } else if ($i%3 == 0){
+//         echo "PHP \n";
+//     } else {
+//         echo "$i \n";
+//     }
+// }
+
+
+// SOMMATORIA DI NUMERI CON SPLAT OPERATOR
+
+$num1= 1;
+$num2= 2;
+$num3= 3;
+$num4= 4;
+$num5= 5;
+$num6= 6;
+
+function sum(...$numbers){
+   
+    $total= array_reduce($numbers,function($total,$number){
+        $total+=$number;
+        return $total;
+    });
+    echo ("$total");
+    return true;
 }
 
-
+sum($num1,$num2,$num3,$num4,$num5,$num6);
 
 ?>
