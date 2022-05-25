@@ -84,23 +84,57 @@
 
 // SOMMATORIA DI NUMERI CON SPLAT OPERATOR
 
-$num1= 1;
-$num2= 2;
-$num3= 3;
-$num4= 4;
-$num5= 5;
-$num6= 6;
+// $num1= 1;
+// $num2= 2;
+// $num3= 3;
+// $num4= 4;
+// $num5= 5;
+// $num6= 6;
 
-function sum(...$numbers){
+// function sum(...$numbers){
    
-    $total= array_reduce($numbers,function($total,$number){
-        $total+=$number;
-        return $total;
-    });
-    echo ("$total");
-    return true;
-}
+//     $total= array_reduce($numbers,function($total,$number){
+//         $total+=$number;
+//         return $total;
+//     });
+//     echo ("$total");
+//     return true;
+// }
 
-sum($num1,$num2,$num3,$num4,$num5,$num6);
+// sum($num1,$num2,$num3,$num4,$num5,$num6);
 
-?>
+
+
+// $test=str_contains("samurai", "Tai");
+
+// var_dump($test);
+
+
+// Write a method, that will get an integer array as parameter and will process every number from this array.
+
+// Return a new array with processing every number of the input-array like this:
+
+// If the number has an integer square root, take this, otherwise square the number.
+
+// Example
+// [4,3,9,7,2,1] -> [2,9,3,49,4,1]
+// Notes
+// The input array will always contain only positive numbers, and will never be empty or null.
+
+
+// $arr=[4,3,9,7,2,1];
+
+// foreach ($arr as &$el) {
+
+//     if(sqrt($el)==intval(sqrt($el))){
+//         $el= sqrt($el);
+//     }else{
+//         $el= $el*$el;
+//     }
+    
+// }
+
+// var_dump($arr);
+
+
+// ?>
