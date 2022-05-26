@@ -1,5 +1,7 @@
 <?php
 
+// CREATE CLASSE PADRE CON CLASSI FIGLIE
+
 class EldenRingPlayer{
     public $name;
     public $gender;
@@ -251,12 +253,121 @@ class Samurai extends EldenRingPlayer {
     
 }
 
+// VARIABILI DI APPOGGIO
 
-$pg1= new Hero("Fil","M","MasterKey");
-$pg1->pgStat();
-$pg1->pgCount();
 
-$pg2= new Samurai("Fil","M","MasterKey");
+$pgs=[];
 
-$pg2->pgStat();
-$pg2->pgCount();
+
+// CREAZIONI FUNZIONI SINGOLE
+
+function menu(){
+    $a=1;
+    do{
+        $choice=readline("\nPremi 1 per creare un personaggio\nPremi 2 per visualizzare i tuoi personaggi e le loro statistiche\nPremi 3 per vedere i nomi dei personaggi hai creato\nPremi 0 per uscire\n");
+
+        switch ($choice) {
+            case '1':
+                createPG();
+                break;
+            case '2':
+                viewPgs();
+                break;
+            case '3':
+                viewNames();
+                break;
+            
+            default:'0';
+                return $a=0;
+                break;
+        } 
+    }while($a!=0);
+}
+
+function createPG(){
+    $selectPg= readline("Scegli fra:\n-Hero\n-Bandit\n-Astrologer\n-Warrior\n-Prisoner\n-Confessor\n-Wretch\n-Vagabond\n-Prophet\n-Samurai\n");
+    global $pgs;
+    switch ($selectPg) {
+        case 'Hero':
+            $pg= new Hero(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            echo "Il tuo personaggio $pg->name di classe Hero è stato creato con successo\n";
+            return $pgs[]=$pg;
+            break;
+        case 'Bandit':
+            $pg= new Bandit(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            echo "Il tuo personaggio $pg->name di classe Bandit è stato creato con successo\n";
+            return $pgs[]=$pg;
+            break;
+        case 'Astrologer':
+            $pg= new Astrologer(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            echo "Il tuo personaggio $pg->name di classe Astrologer è stato creato con successo\n";
+            return $pgs[]=$pg;
+            break;
+        case 'Warrior':
+            $pg= new Warrior(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            echo "Il tuo personaggio $pg->name di classe Warrior è stato creato con successo\n";
+            return $pgs[]=$pg;
+            break;
+        case 'Prisoner':
+            $pg= new Prisoner(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            echo "Il tuo personaggio $pg->name di classe Prisoner è stato creato con successo\n";
+            return $pgs[]=$pg;
+            break;
+        case 'Confessor':
+            $pg= new Confessor(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            echo "Il tuo personaggio $pg->name di classe Confessor è stato creato con successo\n";
+            return $pgs[]=$pg;
+            break;
+        case 'Wretch':
+            $pg= new Wretch(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            echo "Il tuo personaggio $pg->name di classe Wretch è stato creato con successo\n";
+            return $pgs[]=$pg;
+            break;
+        case 'Vagabond':
+            $pg= new Vagabond(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            echo "Il tuo personaggio $pg->name di classe Vagabond è stato creato con successo\n";
+            return $pgs[]=$pg;
+            break;
+        case 'Prophet':
+            $pg= new Prophet(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            echo "Il tuo personaggio $pg->name di classe Prophet è stato creato con successo\n";
+            return $pgs[]=$pg;
+            break;
+        case 'Samurai':
+            $pg= new Samurai(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            echo "Il tuo personaggio $pg->name di classe Samurai è stato creato con successo\n";
+            return $pgs[]=$pg;
+            break;
+        
+        default:
+            echo "Non hai inserito un personaggio valido";
+            break;
+    }
+}
+
+function viewPgs(){
+    global $pgs;
+    $app=readline("Inserisci il nome del tuo personaggio: ");
+    for($i=0;$i<count($pgs);$i++){
+    
+        if($pgs[$i]->name==$app){
+        
+        $pgs[$i]->pgStat();
+    }
+    }
+}
+
+function viewNames(){
+    global $pgs;
+    for($i=0;$i<count($pgs); $i++){
+        print_r($pgs[$i]->name);
+    }
+}
+
+// do{
+//     if(menu()!=0){
+//         continue;
+//     } else break;
+// }while(!0);
+
+menu();
