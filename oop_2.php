@@ -62,7 +62,7 @@ class Hero extends EldenRingPlayer {
     public static $intelligence = 14;
     public static $faith = 14;
     public static $arcane = 11;
-    public static $meleeWeapon="Spadone";
+    public static $Weapon="Spadone";
 
     public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
@@ -75,7 +75,7 @@ class Hero extends EldenRingPlayer {
     }
 
     public function attack(){
-       return $this->attack->attack(self::$meleeWeapon,self::$vigor,self::$strength);
+       return $this->attack->attack(self::$Weapon,self::$vigor,self::$strength);
     }
     
 }
@@ -91,7 +91,7 @@ class Bandit extends EldenRingPlayer {
     public static $intelligence = 9;
     public static $faith = 8;
     public static $arcane = 14;
-    public static $dexWeapon="Katana";
+    public static $Weapon="Katana";
 
     public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
@@ -104,7 +104,7 @@ class Bandit extends EldenRingPlayer {
     }
 
     public function attack(){
-        return $this->attack->attack(self::$dexWeapon,self::$vigor,self::$dexterity);
+        return $this->attack->attack(self::$Weapon,self::$vigor,self::$dexterity);
     }
     
 }
@@ -119,7 +119,7 @@ class Astrologer extends EldenRingPlayer {
     public static $intelligence = 16;
     public static $faith = 7;
     public static $arcane = 9;
-    public static $magicWeapon="Bastone cariano"; 
+    public static $Weapon="Bastone cariano"; 
 
 
     public function __construct($name,$gender,$gift,Attack $Hit){
@@ -133,7 +133,7 @@ class Astrologer extends EldenRingPlayer {
     }
 
     public function attack(){
-        return $this->attack->attack(self::$magicWeapon,self::$vigor,self::$intelligence);
+        return $this->attack->attack(self::$Weapon,self::$vigor,self::$intelligence);
     }
 
     
@@ -149,7 +149,7 @@ class Warrior extends EldenRingPlayer {
     public static $intelligence = 10;
     public static $faith = 8;
     public static $arcane = 9;
-    public static $dexWeapon="Katana";
+    public static $Weapon="Katana";
     
     
 
@@ -164,7 +164,7 @@ class Warrior extends EldenRingPlayer {
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
     }
     public function attack(){
-        return $this->attack->attack(self::$dexWeapon,self::$vigor,self::$dexterity);
+        return $this->attack->attack(self::$Weapon,self::$vigor,self::$dexterity);
     }
 
     
@@ -180,7 +180,7 @@ class Prisoner extends EldenRingPlayer {
     public static $intelligence = 14;
     public static $faith = 6;
     public static $arcane = 9;
-    public static $magicWeapon="Bastone cariano"; 
+    public static $Weapon="Bastone cariano"; 
 
 
     public function __construct($name,$gender,$gift,Attack $Hit){
@@ -193,7 +193,7 @@ class Prisoner extends EldenRingPlayer {
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
     }
     public function attack(){
-        return $this->attack->attack(self::$magicWeapon,self::$vigor,self::$intelligence);
+        return $this->attack->attack(self::$Weapon,self::$vigor,self::$intelligence);
     }
 
     
@@ -209,7 +209,7 @@ class Confessor extends EldenRingPlayer {
     public static $intelligence = 9;
     public static $faith = 14;
     public static $arcane = 9;
-    public static $faithWeapon="Spada sacra"; 
+    public static $Weapon="Spada sacra"; 
 
     
 
@@ -223,7 +223,7 @@ class Confessor extends EldenRingPlayer {
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
     }
     public function attack(){
-        return $this->attack->attack(self::$faithWeapon,self::$vigor,self::$faith);
+        return $this->attack->attack(self::$Weapon,self::$vigor,self::$faith);
     }
 
     
@@ -239,7 +239,7 @@ class Wretch extends EldenRingPlayer {
     public static $intelligence = 10;
     public static $faith = 10;
     public static $arcane = 10;
-    public static $faithWeapon="Spada sacra"; 
+    public static $Weapon="Spada sacra"; 
 
 
     public function __construct($name,$gender,$gift,Attack $Hit){
@@ -252,7 +252,7 @@ class Wretch extends EldenRingPlayer {
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
     }
     public function attack(){
-        return $this->attack->attack(self::$faithWeapon,self::$vigor,self::$faith);
+        return $this->attack->attack(self::$Weapon,self::$vigor,self::$faith);
     }
 
     
@@ -268,7 +268,7 @@ class Vagabond extends EldenRingPlayer {
     public static $intelligence = 9;
     public static $faith = 9;
     public static $arcane = 7;
-    public static $meleeWeapon="Spadone";
+    public static $Weapon="Spadone";
 
 
     public function __construct($name,$gender,$gift,Attack $Hit){
@@ -281,7 +281,7 @@ class Vagabond extends EldenRingPlayer {
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
     }
     public function attack(){
-        return $this->attack->attack(self::$meleeWeapon,self::$vigor,self::$strength);
+        return $this->attack->attack(self::$Weapon,self::$vigor,self::$strength);
     }
 
     
@@ -297,7 +297,7 @@ class Prophet extends EldenRingPlayer {
     public static $intelligence = 7;
     public static $faith = 16;
     public static $arcane = 10;
-    public static $faithWeapon="Spada sacra"; 
+    public static $Weapon="Spada sacra"; 
 
 
     public function __construct($name,$gender,$gift,Attack $Hit){
@@ -310,7 +310,7 @@ class Prophet extends EldenRingPlayer {
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
     }
     public function attack(){
-        return $this->attack->attack(self::$faithWeapon,self::$vigor,self::$faith);
+        return $this->attack->attack(self::$Weapon,self::$vigor,self::$faith);
     }
     
 }
@@ -325,7 +325,7 @@ class Samurai extends EldenRingPlayer {
     public static $intelligence = 9;
     public static $faith = 8;
     public static $arcane = 8;
-    public static $dexWeapon="Katana";
+    public static $Weapon="Katana";
 
 
     public function __construct($name,$gender,$gift,Attack $Hit){
@@ -339,7 +339,7 @@ class Samurai extends EldenRingPlayer {
     }
 
     public function attack(){
-        return $this->attack->attack(self::$dexWeapon,self::$vigor,self::$dexterity);
+        return $this->attack->attack(self::$Weapon,self::$vigor,self::$dexterity);
     }
 
     
@@ -471,14 +471,16 @@ function battle(){
 
     while($pg1Hp>10 && $pg2Hp>10){
             sleep(2);
+            print_r("Hp rimanenti: ".$filtPgs[0]->name." ".$pg1Hp." ");
+            print_r("Hp rimanenti: " .$filtPgs[1]->name." ".$pg2Hp."\n");
             $pg2Hp=$pg2Hp-$filtPgs[0]-> attack();
-            echo "Il combattente ". $filtPgs[0]->name ." attacca con potenza :".$filtPgs[0]->attack()."\n";
+            echo "Il combattente ". $filtPgs[0]->name ." attacca con ". $filtPgs[0]::$Weapon ." a potenza :".$filtPgs[0]->attack()."\n";
             $pg1Hp=$pg1Hp-$filtPgs[1]-> attack();
-            echo "Il combattente ". $filtPgs[1]->name ." attacca con potenza :".$filtPgs[1]->attack()."\n";
+            echo "Il combattente ". $filtPgs[1]->name ." attacca con ". $filtPgs[0]::$Weapon ." potenza :".$filtPgs[1]->attack()."\n";
     };
     
   
-    return $pg1Hp>0 ? print_r("Il combattente ".$filtPgs[0]->name." con classe ".$filtPgs[0]::class." ha ucciso ".$filtPgs[1]->name."\n"):print_r("Il combattente ".$filtPgs[1]->name." con classe ".$filtPgs[0]::class." ha ucciso " .$filtPgs[0]->name."\n");
+    return $pg1Hp>0 ? print_r("Il combattente ".$filtPgs[0]->name." con classe ".$filtPgs[0]::class." ha ucciso ".$filtPgs[1]->name."\n"):print_r("Il combattente ".$filtPgs[1]->name." con classe ".$filtPgs[1]::class." ha ucciso " .$filtPgs[0]->name."\n");
 
 
 
