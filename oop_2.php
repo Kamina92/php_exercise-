@@ -3,7 +3,6 @@
 
 
 $pgs=[];
-$magicWeapon="Bastone cariano";
 
 
 
@@ -92,7 +91,7 @@ class Bandit extends EldenRingPlayer {
     public static $intelligence = 9;
     public static $faith = 8;
     public static $arcane = 14;
-    public static $meleeWeapon="Spadone";
+    public static $dexWeapon="Katana";
 
     public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
@@ -105,7 +104,7 @@ class Bandit extends EldenRingPlayer {
     }
 
     public function attack(){
-        return $this->attack->attack(self::$meleeWeapon,self::$vigor,self::$strength);
+        return $this->attack->attack(self::$dexWeapon,self::$vigor,self::$dexterity);
     }
     
 }
@@ -120,14 +119,21 @@ class Astrologer extends EldenRingPlayer {
     public static $intelligence = 16;
     public static $faith = 7;
     public static $arcane = 9;
+    public static $magicWeapon="Bastone cariano"; 
 
-    public function __construct($name,$gender,$gift){
+
+    public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
         $this->gift = $gift;
+        $this->attack = $Hit;
     }
 
     public function pgStat(){
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
+    }
+
+    public function attack(){
+        return $this->attack->attack(self::$magicWeapon,self::$vigor,self::$intelligence);
     }
 
     
@@ -143,14 +149,22 @@ class Warrior extends EldenRingPlayer {
     public static $intelligence = 10;
     public static $faith = 8;
     public static $arcane = 9;
+    public static $dexWeapon="Katana";
+    
+    
 
-    public function __construct($name,$gender,$gift){
+
+    public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
         $this->gift = $gift;
+        $this->attack = $Hit;
     }
 
     public function pgStat(){
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
+    }
+    public function attack(){
+        return $this->attack->attack(self::$dexWeapon,self::$vigor,self::$dexterity);
     }
 
     
@@ -166,14 +180,20 @@ class Prisoner extends EldenRingPlayer {
     public static $intelligence = 14;
     public static $faith = 6;
     public static $arcane = 9;
+    public static $magicWeapon="Bastone cariano"; 
 
-    public function __construct($name,$gender,$gift){
+
+    public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
         $this->gift = $gift;
+        $this->attack = $Hit;
     }
 
     public function pgStat(){
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
+    }
+    public function attack(){
+        return $this->attack->attack(self::$magicWeapon,self::$vigor,self::$intelligence);
     }
 
     
@@ -189,14 +209,21 @@ class Confessor extends EldenRingPlayer {
     public static $intelligence = 9;
     public static $faith = 14;
     public static $arcane = 9;
+    public static $faithWeapon="Spada sacra"; 
 
-    public function __construct($name,$gender,$gift){
+    
+
+    public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
         $this->gift = $gift;
+        $this->attack = $Hit;
     }
 
     public function pgStat(){
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
+    }
+    public function attack(){
+        return $this->attack->attack(self::$faithWeapon,self::$vigor,self::$faith);
     }
 
     
@@ -212,14 +239,20 @@ class Wretch extends EldenRingPlayer {
     public static $intelligence = 10;
     public static $faith = 10;
     public static $arcane = 10;
+    public static $faithWeapon="Spada sacra"; 
 
-    public function __construct($name,$gender,$gift){
+
+    public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
         $this->gift = $gift;
+        $this->attack = $Hit;
     }
 
     public function pgStat(){
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
+    }
+    public function attack(){
+        return $this->attack->attack(self::$faithWeapon,self::$vigor,self::$faith);
     }
 
     
@@ -235,14 +268,20 @@ class Vagabond extends EldenRingPlayer {
     public static $intelligence = 9;
     public static $faith = 9;
     public static $arcane = 7;
+    public static $meleeWeapon="Spadone";
 
-    public function __construct($name,$gender,$gift){
+
+    public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
         $this->gift = $gift;
+        $this->attack = $Hit;
     }
 
     public function pgStat(){
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
+    }
+    public function attack(){
+        return $this->attack->attack(self::$meleeWeapon,self::$vigor,self::$strength);
     }
 
     
@@ -258,16 +297,21 @@ class Prophet extends EldenRingPlayer {
     public static $intelligence = 7;
     public static $faith = 16;
     public static $arcane = 10;
+    public static $faithWeapon="Spada sacra"; 
 
-    public function __construct($name,$gender,$gift){
+
+    public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
         $this->gift = $gift;
+        $this->attack = $Hit;
     }
 
     public function pgStat(){
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
     }
-
+    public function attack(){
+        return $this->attack->attack(self::$faithWeapon,self::$vigor,self::$faith);
+    }
     
 }
 class Samurai extends EldenRingPlayer {
@@ -281,14 +325,21 @@ class Samurai extends EldenRingPlayer {
     public static $intelligence = 9;
     public static $faith = 8;
     public static $arcane = 8;
+    public static $dexWeapon="Katana";
 
-    public function __construct($name,$gender,$gift){
+
+    public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
         $this->gift = $gift;
+        $this->attack = $Hit;
     }
 
     public function pgStat(){
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
+    }
+
+    public function attack(){
+        return $this->attack->attack(self::$dexWeapon,self::$vigor,self::$dexterity);
     }
 
     
@@ -340,42 +391,42 @@ function createPG(){
             return $pgs[]=$pg;
             break;
         case 'Astrologer':
-            $pg= new Astrologer(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            $pg= new Astrologer(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"),new Hit);
             echo "Il tuo personaggio $pg->name di classe Astrologer è stato creato con successo\n";
             return $pgs[]=$pg;
             break;
         case 'Warrior':
-            $pg= new Warrior(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            $pg= new Warrior(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"),new Hit);
             echo "Il tuo personaggio $pg->name di classe Warrior è stato creato con successo\n";
             return $pgs[]=$pg;
             break;
         case 'Prisoner':
-            $pg= new Prisoner(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            $pg= new Prisoner(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"),new Hit);
             echo "Il tuo personaggio $pg->name di classe Prisoner è stato creato con successo\n";
             return $pgs[]=$pg;
             break;
         case 'Confessor':
-            $pg= new Confessor(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            $pg= new Confessor(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"),new Hit);
             echo "Il tuo personaggio $pg->name di classe Confessor è stato creato con successo\n";
             return $pgs[]=$pg;
             break;
         case 'Wretch':
-            $pg= new Wretch(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            $pg= new Wretch(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"),new Hit);
             echo "Il tuo personaggio $pg->name di classe Wretch è stato creato con successo\n";
             return $pgs[]=$pg;
             break;
         case 'Vagabond':
-            $pg= new Vagabond(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            $pg= new Vagabond(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"),new Hit);
             echo "Il tuo personaggio $pg->name di classe Vagabond è stato creato con successo\n";
             return $pgs[]=$pg;
             break;
         case 'Prophet':
-            $pg= new Prophet(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            $pg= new Prophet(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"),new Hit);
             echo "Il tuo personaggio $pg->name di classe Prophet è stato creato con successo\n";
             return $pgs[]=$pg;
             break;
         case 'Samurai':
-            $pg= new Samurai(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            $pg= new Samurai(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"),new Hit);
             echo "Il tuo personaggio $pg->name di classe Samurai è stato creato con successo\n";
             return $pgs[]=$pg;
             break;
