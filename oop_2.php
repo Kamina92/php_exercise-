@@ -1,4 +1,33 @@
 <?php
+// VARIABILI DI APPOGGIO GLOBALI
+
+
+$pgs=[];
+$magicWeapon="Bastone cariano";
+
+
+
+
+// CREAZIONE CLASSI ASTRATTE E TRAIT
+
+abstract class Attack{
+    abstract function attack($weapon,$pgResistance,$pgPower);
+}
+
+class Hit extends Attack{
+    public function attack($weapon,$pgResistance,$pgPower)
+    {   
+        $attackPower=0;
+        if($weapon =="Spadone"){
+            $attackPower=rand(1,9)+$pgPower;
+        }else {
+            $attackPower=rand(2,8)+$pgPower;
+        }
+        // echo "Attacchi con $weapon con potenza $attackPower";
+        return $attackPower;
+    }
+}
+
 
 // CREATE CLASSE PADRE CON CLASSI FIGLIE
 
@@ -24,6 +53,7 @@ class EldenRingPlayer{
 
 class Hero extends EldenRingPlayer {
     public $gift;
+    public $attack;
     public static $class="Hero";
     public static $vigor = 14;
     public static $mind = 9;
@@ -33,20 +63,26 @@ class Hero extends EldenRingPlayer {
     public static $intelligence = 14;
     public static $faith = 14;
     public static $arcane = 11;
+    public static $meleeWeapon="Spadone";
 
-    public function __construct($name,$gender,$gift){
+    public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
         $this->gift = $gift;
+        $this->attack = $Hit;
     }
 
     public function pgStat(){
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
     }
 
+    public function attack(){
+       return $this->attack->attack(self::$meleeWeapon,self::$vigor,self::$strength);
+    }
     
 }
 class Bandit extends EldenRingPlayer {
     public $gift;
+    public $attack;
     public static $class="Bandit";
     public static $vigor = 10;
     public static $mind =11;
@@ -56,16 +92,21 @@ class Bandit extends EldenRingPlayer {
     public static $intelligence = 9;
     public static $faith = 8;
     public static $arcane = 14;
+    public static $meleeWeapon="Spadone";
 
-    public function __construct($name,$gender,$gift){
+    public function __construct($name,$gender,$gift,Attack $Hit){
         parent::__construct($name,$gender);
         $this->gift = $gift;
+        $this->attack = $Hit;
     }
 
     public function pgStat(){
         echo "il tuo personaggio ha classe:".self::$class."\nVigore:". self::$vigor ."\nMente:". self::$mind ."\n"."Resistenza:". self::$endurance ."\n"."Forza:". self::$strength ."\n"."Destrezza:". self::$dexterity ."\n"."Intelligenza:". self::$intelligence ."\n"."Fede:". self::$faith ."\n"."Arcano:". self::$arcane ."\n";
     }
 
+    public function attack(){
+        return $this->attack->attack(self::$meleeWeapon,self::$vigor,self::$strength);
+    }
     
 }
 class Astrologer extends EldenRingPlayer {
@@ -253,10 +294,7 @@ class Samurai extends EldenRingPlayer {
     
 }
 
-// VARIABILI DI APPOGGIO
 
-
-$pgs=[];
 
 
 // CREAZIONI FUNZIONI SINGOLE
@@ -264,7 +302,7 @@ $pgs=[];
 function menu(){
     $a=1;
     do{
-        $choice=readline("\nPremi 1 per creare un personaggio\nPremi 2 per visualizzare i tuoi personaggi e le loro statistiche\nPremi 3 per vedere i nomi dei personaggi hai creato\nPremi 0 per uscire\n");
+        $choice=readline("\nPremi 1 per creare un personaggio\nPremi 2 per visualizzare i tuoi personaggi e le loro statistiche\nPremi 3 per vedere i nomi dei personaggi hai creato\nPremi 4 per far combattere due personaggi\nPremi 0 per uscire\n");
 
         switch ($choice) {
             case '1':
@@ -275,6 +313,9 @@ function menu(){
                 break;
             case '3':
                 viewNames();
+                break;
+            case '4':
+                battle();
                 break;
             
             default:'0';
@@ -289,12 +330,12 @@ function createPG(){
     global $pgs;
     switch ($selectPg) {
         case 'Hero':
-            $pg= new Hero(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            $pg= new Hero(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"),new Hit);
             echo "Il tuo personaggio $pg->name di classe Hero è stato creato con successo\n";
             return $pgs[]=$pg;
             break;
         case 'Bandit':
-            $pg= new Bandit(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"));
+            $pg= new Bandit(readline("inserisci un nome\n"),readline("inserisci il genere\n"),readline("Scegli un dono\n"),new Hit);
             echo "Il tuo personaggio $pg->name di classe Bandit è stato creato con successo\n";
             return $pgs[]=$pg;
             break;
@@ -360,14 +401,38 @@ function viewPgs(){
 function viewNames(){
     global $pgs;
     for($i=0;$i<count($pgs); $i++){
-        print_r($pgs[$i]->name);
+        print_r($pgs[$i]->name . "\n");
     }
 }
 
-// do{
-//     if(menu()!=0){
-//         continue;
-//     } else break;
-// }while(!0);
+function battle(){
+    global $pgs;
+    $pg1Hp=rand(90,150);
+    $pg2Hp=rand(90,150);
+    
+    $filt1=readline("Inserisci il nome del primo combattente: ");
+    $filt2=readline("Inserisci il nome del secondo combattente: ");
+    $filtPgs=array_filter($pgs,function($el) use($filt1,$filt2){
+        return $el->name==$filt1 || $el->name==$filt2;
+    });
+
+    
+
+    while($pg1Hp>10 && $pg2Hp>10){
+            sleep(2);
+            $pg2Hp=$pg2Hp-$filtPgs[0]-> attack();
+            echo "Il combattente ". $filtPgs[0]->name ." attacca con potenza :".$filtPgs[0]->attack()."\n";
+            $pg1Hp=$pg1Hp-$filtPgs[1]-> attack();
+            echo "Il combattente ". $filtPgs[1]->name ." attacca con potenza :".$filtPgs[1]->attack()."\n";
+    };
+    
+  
+    return $pg1Hp>0 ? print_r("Il combattente ".$filtPgs[0]->name." con classe ".$filtPgs[0]::class." ha ucciso ".$filtPgs[1]->name."\n"):print_r("Il combattente ".$filtPgs[1]->name." con classe ".$filtPgs[0]::class." ha ucciso " .$filtPgs[0]->name."\n");
+
+
+
+}
+
+
 
 menu();
