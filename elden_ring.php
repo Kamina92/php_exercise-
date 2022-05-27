@@ -463,11 +463,9 @@ function battle(){
     
     $filt1=readline("Inserisci il nome del primo combattente: ");
     $filt2=readline("Inserisci il nome del secondo combattente: ");
-    $filtPgs=array_filter($pgs,function($el) use($filt1,$filt2){
+    $filtPgs=array_values(array_filter($pgs,function($el) use($filt1,$filt2){
         return $el->name==$filt1 || $el->name==$filt2;
-    });
-
-    
+    }));
 
     while($pg1Hp>10 && $pg2Hp>10){
             sleep(2);
@@ -476,11 +474,27 @@ function battle(){
             $pg2Hp=$pg2Hp-$filtPgs[0]-> attack();
             echo "Il combattente ". $filtPgs[0]->name ." attacca con ". $filtPgs[0]::$Weapon ." a potenza :".$filtPgs[0]->attack()."\n";
             $pg1Hp=$pg1Hp-$filtPgs[1]-> attack();
-            echo "Il combattente ". $filtPgs[1]->name ." attacca con ". $filtPgs[0]::$Weapon ." potenza :".$filtPgs[1]->attack()."\n";
+            echo "Il combattente ". $filtPgs[1]->name ." attacca con ". $filtPgs[1]::$Weapon ." potenza :".$filtPgs[1]->attack()."\n";
     };
     
   
-    return $pg1Hp>0 ? print_r("Il combattente ".$filtPgs[0]->name." con classe ".$filtPgs[0]::class." ha ucciso ".$filtPgs[1]->name."\n"):print_r("Il combattente ".$filtPgs[1]->name." con classe ".$filtPgs[1]::class." ha ucciso " .$filtPgs[0]->name."\n");
+    return $pg1Hp>0 ? print_r("Il combattente ".$filtPgs[0]->name." con classe ".$filtPgs[0]::class." ha ucciso ".$filtPgs[1]->name."\n"."
+    #     #                                                    #     #                                  ### ### 
+    #  #  # ######    #    #   ##   #    # ######      ##      #  #  # # #    # #    # ###### #####     ### ### 
+    #  #  # #         #    #  #  #  #    # #          #  #     #  #  # # ##   # ##   # #      #    #    ### ### 
+    #  #  # #####     ###### #    # #    # #####     #    #    #  #  # # # #  # # #  # #####  #    #     #   #  
+    #  #  # #         #    # ###### #    # #         ######    #  #  # # #  # # #  # # #      #####             
+    #  #  # #         #    # #    #  #  #  #         #    #    #  #  # # #   ## #   ## #      #   #     ### ### 
+     ## ##  ######    #    # #    #   ##   ######    #    #     ## ##  # #    # #    # ###### #    #    ### ### 
+    \n"):print_r("Il combattente ".$filtPgs[1]->name." con classe ".$filtPgs[1]::class." ha ucciso " .$filtPgs[0]->name."\n"."
+    #     #                                                    #     #                                  ### ### 
+    #  #  # ######    #    #   ##   #    # ######      ##      #  #  # # #    # #    # ###### #####     ### ### 
+    #  #  # #         #    #  #  #  #    # #          #  #     #  #  # # ##   # ##   # #      #    #    ### ### 
+    #  #  # #####     ###### #    # #    # #####     #    #    #  #  # # # #  # # #  # #####  #    #     #   #  
+    #  #  # #         #    # ###### #    # #         ######    #  #  # # #  # # #  # # #      #####             
+    #  #  # #         #    # #    #  #  #  #         #    #    #  #  # # #   ## #   ## #      #   #     ### ### 
+     ## ##  ######    #    # #    #   ##   ######    #    #     ## ##  # #    # #    # ###### #    #    ### ### 
+    \n");
 
 
 
