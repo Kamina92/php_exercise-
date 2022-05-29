@@ -263,27 +263,169 @@
 // [1, 2, 2, 20, 6, 20, 2, 6, 2]  -->  4
 // ...because there are 4 pairs: 2, 20, 6 and 2 (again)
 
-$nums=[0, 0, 0, 0, 0, 0, 0];
+// $nums=[0, 0, 0, 0, 0, 0, 0];
 
-function duplicates($array){
-    $pairs=0;
-    $unique=array_values(array_unique($array));
-    for($i=0; $i<count($unique);$i++){
-        $toFilt=$unique[$i];
-        $app=array_filter($array,function($value) use($toFilt) {
-            return $value==$toFilt;
-        });
+// function duplicates($array){
+//     $pairs=0;
+//     $unique=array_values(array_unique($array));
+//     for($i=0; $i<count($unique);$i++){
+//         $toFilt=$unique[$i];
+//         $app=array_filter($array,function($value) use($toFilt) {
+//             return $value==$toFilt;
+//         });
 
-        if(count($app)>=2){
-            $pairs+=round((count($app)/2),0,PHP_ROUND_HALF_DOWN);
-        };
-    }
+//         if(count($app)>=2){
+//             $pairs+=round((count($app)/2),0,PHP_ROUND_HALF_DOWN);
+//         };
+//     }
 
-    return $pairs;
+//     return $pairs;
+// }
+
+// print_r(duplicates($nums));
+
+// Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013). Jaden is also known for some of his philosophy that he delivers via Twitter. When writing on Twitter, he is known for almost always capitalizing every word. For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+
+// Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+
+// Example:
+
+// Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+// Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+
+
+// function toJadenCase($string) 
+// {
+//    $arr=explode(' ',$string);
+//    $app=[];
+//    foreach($arr as $el){
+//         $el=ucfirst($el);
+//         $app[]=$el;
+//     }
+    
+//     $app=implode(' ',$app);
+
+//     return $app;
+// }
+
+// toJadenCase("How can mirrors be real if our eyes aren't real");
+
+// Description
+// You are Saitama (a.k.a One Punch Man), and you are fighting against the monsters! You are strong enough to kill them with one punch, but after you punch 3 times, one of the remaining monsters will hit you once.
+
+// Your health is health; number of monsters is monsters, damage that monster can give you is damage.
+
+// Task
+// Write a function that will calculate:
+
+// how many hits you received, how much damage you received and your remaining health.
+
+// if your health is <= 0, you die and function should return "hero died".
+
+// Examples
+// (100, 3, 33)  => "hits: 0, damage: 0, health: 100"
+// ( 50, 7, 10)  => "hits: 2, damage: 20, health: 30"
+// Note
+// All numbers are strictly positive. Your function should always return a string.
+
+// Have fun :)
+
+// function killMonsters($h, $m, $dm) {
+//     if($m<=3){
+//         $a="hits: 0, damage: 0, health: $h";
+//         return $a;
+//     } elseif($m%3==0){
+//         $m=$m-1;
+//     }
+
+    
+
+//     $hits=floor(($m/3));
+    
+//     $damage= $hits*$dm;
+
+//     $h=$h-$damage;
+
+//     if($h<=0){
+//         $a="hero died";
+//         return $a;
+//     } else {
+//         $b="hits: $hits, damage: $damage, health: $h";
+//         return $b;
+//     }
+
+//   }
+//  echo(killMonsters(20000,9,10));
+
+// Given two words and a letter, return a single word that's a combination of both words, merged at the point where the given letter first appears in each word. The returned word should have the beginning of the first word and the ending of the second, with the dividing letter in the middle. You can assume both words will contain the dividing letter.
+
+// Examples
+// ("hello", "world", "l")       ==>  "held"
+// ("coding", "anywhere", "n")   ==>  "codinywhere"
+// ("jason", "samson", "s")      ==>  "jasamson"
+// ("wonderful", "people", "e")  ==>  "wondeople"
+
+// function stringMerge($string1, $string2, $letter) {
+
+//     $pos1=strpos($string1,$letter);
+//     $pos2=strpos($string2,$letter);
+
+
+//     $string1=substr($string1,0,$pos1);
+//     $string2=substr($string2,$pos2+1);
+
+//     $final = $string1 . $letter . $string2;
+//     return $final;
+
+// }
+
+// print_r(stringMerge("hello", "world", "l"));
+
+
+// Complete the function that takes one argument, a list of words, and returns the length of the longest word in the list.
+
+// For example:
+
+// ['simple', 'is', 'better', 'than', 'complex'] ==> 7
+// Do not modify the input list.
+
+// function longest($words) {
+//     $length=0;
+
+//     foreach($words as $word){
+//         if($length<strlen($word)){
+//             $length=strlen($word);
+//         }
+//     }
+
+//     return $length;
+
+//   }
+
+//   print_r(longest(['simple', 'is', 'better', 'than', 'complex']));
+
+// Given a random string consisting of numbers, letters, symbols, you need to sum up the numbers in the string.
+
+// Note:
+
+// Consecutive integers should be treated as a single number. eg, 2015 should be treated as a single number 2015, NOT four numbers
+// All the numbers should be treaded as positive integer. eg, 11-14 should be treated as two numbers 11 and 14. Same as 3.14, should be treated as two numbers 3 and 14
+// If no number was given in the string, it should return 0
+// Example:
+
+// str = "In 2015, I want to know how much does iPhone 6+ cost?"
+// The numbers are 2015, 6
+
+// Sum is 2021.
+
+function sum_from_string($str){
+    preg_match_all('!\d+!', $str, $matches);
+
+    print_r($matches[0]);
+    return array_sum($matches[0]);
 }
-
-print_r(duplicates($nums));
-
+$str = "In 2015, I want to know how much does iPhone 6+ cost?";
+print_r(sum_from_string($str));
 
 
 // ?>
