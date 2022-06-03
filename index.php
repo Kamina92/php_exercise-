@@ -418,14 +418,246 @@
 
 // Sum is 2021.
 
-function sum_from_string($str){
-    preg_match_all('!\d+!', $str, $matches);
+// function sum_from_string($str){
+//     preg_match_all('!\d+!', $str, $matches);
 
-    print_r($matches[0]);
-    return array_sum($matches[0]);
-}
-$str = "In 2015, I want to know how much does iPhone 6+ cost?";
-print_r(sum_from_string($str));
+//     print_r($matches[0]);
+//     return array_sum($matches[0]);
+// }
+// $str = "In 2015, I want to know how much does iPhone 6+ cost?";
+// print_r(sum_from_string($str));
 
+
+// Write a function that finds the sum of all its arguments.
+
+// eg:
+
+// sum(1, 2, 3) // => 6
+// sum(8, 2) // => 10
+// sum(1, 2, 3, 4, 5) // => 15
+
+
+// function sum(...$numbers) {
+
+//     return array_sum($numbers);
+  
+// }
+
+// Given a number return the closest number to it that is divisible by 10.
+
+// Example input:
+
+// 22
+// 25
+// 37
+// Expected output:
+
+// 20
+// 30
+// 40
+
+// function closest_multiple_10($n) {
+//     if($n<10){
+//         return 0;
+//     }
+//     $a="$n";
+//     $a=str_split($a);
+//     if($a[(count($a)-1)]>=5){
+//         $final[]=$a[0]+1;
+//     } else {
+//         $final[]=$a[0];
+//     }
+
+//     for($i=1;$i<count($a);$i++){
+//         $final[]=0;
+//     }
+
+//     $final=implode("",$final);
+
+//     return $final;
+
+// }
+
+// print_r(closest_multiple_10(14.5));
+
+
+
+
+// NON FINITO
+
+// You are given two arrays a1 and a2 of strings. Each string is composed with letters from a to z. Let x be any string in the first array and y be any string in the second array.
+
+// Find max(abs(length(x) − length(y)))
+
+// If a1 and/or a2 are empty return -1 in each language except in Haskell (F#) where you will return Nothing (None).
+
+// Example:
+// a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"]
+// a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]
+// mxdiflg(a1, a2) --> 13
+// Bash note:
+// input : 2 strings with substrings separated by ,
+// output: number as a string
+
+// function mxdiflg($a1, $a2) {
+//    if($a1==[]||$a2==[]){
+//        return -1;
+//    }
+
+
+// }
+
+
+// In a factory a printer prints labels for boxes. For one kind of boxes the printer has to use colors which, for the sake of simplicity, are named with letters from a to m.
+
+// The colors used by the printer are recorded in a control string. For example a "good" control string would be aaabbbbhaijjjm meaning that the printer used three times color a, four times color b, one time color h then one time color a...
+
+// Sometimes there are problems: lack of colors, technical malfunction and a "bad" control string is produced e.g. aaaxbbbbyyhwawiwjjjwwm with letters not from a to m.
+
+// You have to write a function printer_error which given a string will return the error rate of the printer as a string representing a rational whose numerator is the number of errors and the denominator the length of the control string. Don't reduce this fraction to a simpler expression.
+
+// The string has a length greater or equal to one and contains only letters from ato z.
+
+// Examples:
+// s="aaabbbbhaijjjm"
+// printer_error(s) => "0/14"
+
+// s="aaaxbbbbyyhwawiwjjjwwm"
+// printer_error(s) => "8/22"
+
+
+// function printerError($s) {
+//     $errors=['n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+//     $len=strlen($s);
+//     $final=str_replace($errors,"",$s);
+
+//     $error=$len-strlen($final);
+
+//     return "$error" . "/" . "$len";
+
+// }
+
+// print_r(printerError('aaabbbbhaijjjm'));
+
+
+// Take 2 strings s1 and s2 including only letters from ato z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+
+// Examples:
+// a = "xyaabbbccccdefww"
+// b = "xxxxyyyyabklmopq"
+// longest(a, b) -> "abcdefklmopqwxy"
+
+// a = "abcdefghijklmnopqrstuvwxyz"
+// longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
+
+
+// function longest($a, $b) {
+//     $final="$a" . "$b";
+//     $final=str_split($final);
+//     $final=array_unique($final);
+//     sort($final);
+//     $final=implode("",$final);
+//     return $final;
+// }
+
+// $a = "xyaabbbccccdefww";
+// $b = "xxxxyyyyabklmopq";
+
+// longest($a,$b);
+
+// The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+
+// Examples
+// "din"      =>  "((("
+// "recede"   =>  "()()()"
+// "Success"  =>  ")())())"
+// "(( @"     =>  "))((" 
+// Notes
+// Assertion messages may be unclear about what they display in some languages. If you read "...It Should encode XXX", the "XXX" is the expected result, not the input!
+
+// function duplicate_encode($word){
+// 	$final=[];
+//     $arr=str_split(strtolower($word));
+    
+//     $unici= array_unique($arr);
+
+//     foreach($arr as &$value){
+
+//         $count=count(array_keys($arr,$value));
+//         if($count>1){
+//             $final[]=')';
+//         }else {$final[]='(';}
+
+//     }
+   
+//     return implode('',$final);
+
+
+//     }
+
+
+// print_r(duplicate_encode('recede'));
+
+
+// Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+
+// Examples:
+
+// * 'abc' =>  ['ab', 'c_']
+// * 'abcdef' => ['ab', 'cd', 'ef']
+
+// function solution($str) {
+
+//     if($str==''){
+//         return [];
+//     }else{
+
+//         $arr=str_split($str,2);
+
+//         if(strlen($str)%2!=0){
+//             $arr[count($arr)-1]=substr($str,-1).'_';
+//         }
+  
+//     return $arr;
+//     }
+// }
+
+// solution('abc');
+
+// There is an array with some numbers. All numbers are equal except for one. Try to find it!
+
+// findUniq([ 1, 1, 1, 2, 1, 1 ]) === 2
+// findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55
+// It’s guaranteed that array contains at least 3 numbers.
+
+// The tests contain some very huge arrays, so think about performance.
+
+function find_uniq($a) {
+    $i=1;
+        foreach($a as $num){
+            if($num==$a[$i]){
+                $i++;
+            } elseif($i==1 && $num!=$a[$i+1]){
+                return $num;
+            }else return $a[$i];
+        }
+  }
+
+// function find_uniq($a) {
+//     $unique=array_values(array_unique($a));
+//     $str=implode(" ",$a);
+//     return substr_count($str,$unique[0])==1 ? $unique[0]: $unique[1];
+
+    
+//   }
+// function find_uniq($a) {
+//     $unique=array_values(array_unique($a));
+//     if(count(array_keys($a,$unique[0]))==1){
+//         return $unique[0];
+//     } else return $unique[1];
+//   }
+
+  print_r(find_uniq([87, 81, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87]));
 
 // ?>
