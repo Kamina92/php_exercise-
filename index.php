@@ -852,32 +852,195 @@
 // Note
 // In case of an empty array return 0. You will not be tested with invalid input (input will always be an array). Order of the face (eyes, nose, mouth) elements will always be the same.
 
-function count_smileys($arr){
-    $eyes=[':',';'];
-    $nose=['-','~'];
-    $smile=[')','D'];
-    $test=[];
-    $count=0;
-    foreach($arr as $str){
-        if(strlen($str)==3){
-            $test[]=in_array($str[0],$eyes);
-            $test[]=in_array($str[1],$nose);
-            $test[]=in_array($str[2],$smile);
-            in_array('',$test) ? : $count++;
-            $test=[];
-        } elseif(strlen($str)==2){
-            $test[]=in_array($str[0],$eyes);
-            $test[]=in_array($str[1],$smile);  
-            in_array('',$test) ? : $count++; 
-            $test=[];
-        }
+// function count_smileys($arr){
+//     $eyes=[':',';'];
+//     $nose=['-','~'];
+//     $smile=[')','D'];
+//     $test=[];
+//     $count=0;
+//     foreach($arr as $str){
+//         if(strlen($str)==3){
+//             $test[]=in_array($str[0],$eyes);
+//             $test[]=in_array($str[1],$nose);
+//             $test[]=in_array($str[2],$smile);
+//             in_array('',$test) ? : $count++;
+//             $test=[];
+//         } elseif(strlen($str)==2){
+//             $test[]=in_array($str[0],$eyes);
+//             $test[]=in_array($str[1],$smile);  
+//             in_array('',$test) ? : $count++; 
+//             $test=[];
+//         }
 
+//     }
+
+//     return $count;
+// }
+
+// print_r(count_smileys([':)',':(',':D',':O',':;']));
+
+// You are given an array(list) strarr of strings and an integer k. Your task is to return the first longest string consisting of k consecutive strings taken in the array.
+
+// Examples:
+// strarr = ["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"], k = 2
+
+// Concatenate the consecutive strings of strarr by 2, we get:
+
+// treefoling   (length 10)  concatenation of strarr[0] and strarr[1]
+// folingtrashy ("      12)  concatenation of strarr[1] and strarr[2]
+// trashyblue   ("      10)  concatenation of strarr[2] and strarr[3]
+// blueabcdef   ("      10)  concatenation of strarr[3] and strarr[4]
+// abcdefuvwxyz ("      12)  concatenation of strarr[4] and strarr[5]
+
+// Two strings are the longest: "folingtrashy" and "abcdefuvwxyz".
+// The first that came is "folingtrashy" so 
+// longest_consec(strarr, 2) should return "folingtrashy".
+
+// In the same way:
+// longest_consec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"], 2) --> "abigailtheta"
+// n being the length of the string array, if n = 0 or k > n or k <= 0 return "" (return Nothing in Elm).
+
+// Note
+// consecutive strings : follow one after another without an interruption
+
+
+// function longestConsec($strarr, $k) {
+//     if($strarr==[] || $k<=0 || $k>count($strarr)){
+//         return "";
+//     }
+//     $count=0;
+//     foreach($strarr as &$str){
+//         for($i=1;$i<$k;$i++){
+//             $str=$str.$strarr[$count+$i];
+//         }
+//         $count++;
+//     }
+
+//     $final=$strarr[0];
+    
+//     foreach($strarr as &$str){
+//         if(strlen($final)<strlen($str)){
+//             $final=$str;
+//         }
+//     }
+    
+//     return $final;
+
+// }
+
+// longestConsec(["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"],2);
+
+// Write Number in Expanded Form
+// You will be given a number and you will need to return it as a string in Expanded Form. For example:
+
+// expanded_form(12); // Should return "10 + 2"
+// expanded_form(42); // Should return "40 + 2"
+// expanded_form(70304); // Should return "70000 + 300 + 4"
+// NOTE: All numbers will be whole numbers greater than 0.
+
+// function expanded_form($n){
+//     $test=[];
+//     $n=strval($n);
+//     $n=str_split($n);
+//     $nLeng=count($n)-1;
+//     $count=0;
+//     foreach($n as &$val){
+//         if($val>0){
+//             $zeros=$nLeng-$count;
+//             for($i=1;$i<=$zeros;$i++){
+//                 $val=$val.'0';
+//             }
+//             $test[]=$val;
+//             $count++;
+//         }else $count++;
+
+//     }
+
+//     $final=join(' + ',$test);
+
+//     return $final;
+// }
+
+// print_r(expanded_form(70304));
+
+
+
+// In this simple Kata your task is to create a function that turns a string into a Mexican Wave. You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up. 
+// Rules
+//  1.  The input string will always be lower case but maybe empty.
+
+//  2.  If the character in the string is whitespace then pass over it as if it was an empty seat
+// Example
+// wave("hello") => []string{"Hello", "hEllo", "heLlo", "helLo", "hellO"}
+
+// function wave($people){
+//     if($people==''){
+//         return [];
+//     }
+
+//     $wave=str_split($people);
+
+//     $final=[];
+
+//     foreach($wave as &$char){
+//         if($char!=' '){
+//         $char=strtoupper($char);
+//         $final[]=join('',$wave);
+//         $char=strtolower($char);
+//         }
+//     }
+
+//     return $final;
+  
+// }
+
+// wave('hello');
+
+// Write a function toWeirdCase (weirdcase in Ruby) that accepts a string, and returns the same string with all even indexed characters in each word upper cased, and all odd indexed characters in each word lower cased. The indexing just explained is zero based, so the zero-ith index is even, therefore that character should be upper cased and you need to start over for each word.
+
+// The passed in string will only consist of alphabetical characters and spaces(' '). Spaces will only be present if there are multiple words. Words will be separated by a single space(' ').
+
+// Examples:
+// toWeirdCase("String"); // => returns "StRiNg"
+// toWeirdCase("Weird string case"); // => returns "WeIrD StRiNg CaSe"
+
+// function toWeirdCase($string) {
+//     $arr=explode(' ',$string);
+//     foreach($arr as &$string){
+//         $len=strlen($string);
+//         for ($i=0; $i <$len ; $i++) { 
+//             if($i==0|| $i%2==0){
+//                 $string[$i]=strtoupper($string[$i]);
+//             }else $string[$i]=strtolower($string[$i]);
+//         }
+
+//     }
+//     return join(' ',$arr);;
+// }
+
+// toWeirdCase('WeIrD StRiNg CaSe');
+
+// Take an array and remove every second element from the array. Always keep the first element and start removing with the next element.
+
+// Example:
+
+// ["Keep", "Remove", "Keep", "Remove", "Keep", ...] --> ["Keep", "Keep", "Keep", ...]
+
+// None of the arrays will be empty, so you don't have to worry about that!
+
+function removeEveryOther($array) {
+    $count=1;
+    foreach($array as &$el){
+        if($count>0 && $count%2!=0){
+            unset($array[$count]);
+        }
+        $count++;
     }
 
-    return $count;
+    print_r($array);
+    return $array;
 }
 
-print_r(count_smileys([':)',':(',':D',':O',':;']));
-
+removeEveryOther(["Keep", "Remove", "Keep", "Remove", "Keep"]);
 
 ?>
