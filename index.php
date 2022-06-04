@@ -633,16 +633,16 @@
 
 // The tests contain some very huge arrays, so think about performance.
 
-function find_uniq($a) {
-    $i=1;
-        foreach($a as $num){
-            if($num==$a[$i]){
-                $i++;
-            } elseif($i==1 && $num!=$a[$i+1]){
-                return $num;
-            }else return $a[$i];
-        }
-  }
+// function find_uniq($a) {
+//     $i=1;
+//         foreach($a as $num){
+//             if($num==$a[$i]){
+//                 $i++;
+//             } elseif($i==1 && $num!=$a[$i+1]){
+//                 return $num;
+//             }else return $a[$i];
+//         }
+//   }
 
 // function find_uniq($a) {
 //     $unique=array_values(array_unique($a));
@@ -656,8 +656,228 @@ function find_uniq($a) {
 //     if(count(array_keys($a,$unique[0]))==1){
 //         return $unique[0];
 //     } else return $unique[1];
+// //   }
+
+//   print_r(find_uniq([87, 81, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87]));
+
+
+// NON RISOLTO
+
+// Define a function that takes an integer argument and returns a logical value true or false depending on if the integer is a prime.
+
+// Per Wikipedia, a prime number ( or a prime ) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+
+// Requirements
+// You can assume you will be given an integer input.
+// You can not assume that the integer will be only positive. You may be given negative numbers as well ( or 0 ).
+// NOTE on performance: There are no fancy optimizations required, but still the most trivial solutions might time out. Numbers go up to 2^31 ( or similar, depending on language ). Looping all the way up to n, or n/2, will be too slow.
+// Example
+// is_prime(1)  /* false */
+// is_prime(2)  /* true  */
+// // is_prime(-1) /* false */
+// function is_prime($n){
+//     if($n==2||$n==3){
+//         return true;
+//     }elseif($n>3&&$n%2!=0 && $n%3!=0){
+//         return true;
+//     } else return false;
 //   }
 
-  print_r(find_uniq([87, 81, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87]));
+//   print_r(is_prime(1673039083));
 
-// ?>
+
+
+//   Given two arrays a and b write a function comp(a, b) (orcompSame(a, b)) that checks whether the two arrays have the "same" elements, with the same multiplicities (the multiplicity of a member is the number of times it appears). "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
+
+// Examples
+// Valid arrays
+// a = [121, 144, 19, 161, 19, 144, 19, 11]  
+// b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
+// comp(a, b) returns true because in b 121 is the square of 11, 14641 is the square of 121, 20736 the square of 144, 361 the square of 19, 25921 the square of 161, and so on. It gets obvious if we write b's elements in terms of squares:
+
+// a = [121, 144, 19, 161, 19, 144, 19, 11] 
+// b = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19]
+// Invalid arrays
+// If, for example, we change the first number to something else, comp is not returning true anymore:
+
+// a = [121, 144, 19, 161, 19, 144, 19, 11]  
+// b = [132, 14641, 20736, 361, 25921, 361, 20736, 361]
+// comp(a,b) returns false because in b 132 is not the square of any number of a.
+
+// a = [121, 144, 19, 161, 19, 144, 19, 11]  
+// b = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+// comp(a,b) returns false because in b 36100 is not the square of any number of a.
+
+// Remarks
+// a or b might be [] or {} (all languages except R, Shell).
+// a or b might be nil or null or None or nothing (except in C++, COBOL, Crystal, D, Dart, Elixir, Fortran, F#, Haskell, Nim, OCaml, Pascal, Perl, PowerShell, Prolog, PureScript, R, Racket, Rust, Shell, Swift).
+// If a or b are nil (or null or None, depending on the language), the problem doesn't make sense so return false.
+
+// Note for C
+// The two arrays have the same size (> 0) given as parameter in function comp.
+
+// RISOLTO MA SU CODE WARS NON VA
+
+// function comp($a, $b) {
+//     if($a==[] || $b==[] || $a==null || $b==null){
+//         return 'false';
+//     }
+
+//     if(count($a)==count($b) && count(array_unique($a))==count(array_unique($b))){
+
+//         foreach($a as $num){
+//             $app=array_search(pow($num,2),$b);
+//             print_r($app);
+//             if($app===false){
+//                 return 'false';
+//             }
+        
+//         }
+//         return 'true';
+//     }else return 'false';
+
+
+// }
+
+// $a = [4,4];
+// $b = [4,4];
+
+// print_r(comp($a,$b));
+
+// You will be given an array of numbers. You have to sort the odd numbers in ascending order while leaving the even numbers at their original positions.
+
+// Examples
+// [7, 1]  =>  [1, 7]
+// [5, 8, 6, 3, 4]  =>  [3, 8, 6, 5, 4]
+// [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  =>  [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
+
+// function sortArray($arr){
+//     $odd=array_filter($arr,function($num){
+//         return $num%2!=0;
+//     });
+//     $even=array_filter($arr,function($num){
+//         return $num%2==0;
+//     });
+//     asort($odd);
+
+//     $chiavi=array_keys($odd);
+   
+//     sort($chiavi);
+   
+//     $i=0;
+
+//     $new=[];
+
+//     foreach($odd as $key=>$value){
+
+//         $new[$chiavi[$i]]=$value;
+//         $i++;
+//     }
+
+//     $final=$new + $even;
+
+//     ksort($final);
+    
+//    return $final;
+    
+// }
+
+// sortArray([5, 8, 6, 3, 4]);
+
+// Build Tower
+// Build a pyramid-shaped tower given a positive integer number of floors. A tower block is represented with "*" character.
+
+// For example, a tower with 3 floors looks like this:
+
+// [
+//   "  *  ",
+//   " *** ", 
+//   "*****"
+// ]
+// And a tower with 6 floors looks like this:
+
+// [
+//   "     *     ", 
+//   "    ***    ", 
+//   "   *****   ", 
+//   "  *******  ", 
+//   " ********* ", 
+//   "***********"
+// ]
+
+// function tower_builder($n){
+    
+//     $tower=[];
+    
+//     for($i=1; $i<=$n;$i++){
+//         if($i==1){
+//             $tower[]='*';
+//         }else{
+//             $tower[]=$tower[$i-2].'**';
+//         }
+//     }
+
+//     $lastFloorLeng=strlen($tower[count($tower)-1]);
+
+//     foreach($tower as &$floor){
+//         if (strlen($floor)<$lastFloorLeng){
+//             $spaces=$lastFloorLeng-strlen($floor);
+//             $floor= str_repeat(" ",(floor(($spaces/2)))).$floor.str_repeat(" ",(floor(($spaces/2))));
+//         }
+//     }
+
+//     return $tower;
+// }
+
+// print_r(tower_builder(3));
+
+// $t=str_repeat(" ",2).'*'.str_repeat(" ",2);
+
+// Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+
+// Rules for a smiling face:
+
+// Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+// A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+// Every smiling face must have a smiling mouth that should be marked with either ) or D
+// No additional characters are allowed except for those mentioned.
+
+// Valid smiley face examples: :) :D ;-D :~)
+// Invalid smiley faces: ;( :> :} :]
+
+// Example
+// countSmileys([':)', ';(', ';}', ':-D']);       // should return 2;
+// countSmileys([';D', ':-(', ':-)', ';~)']);     // should return 3;
+// countSmileys([';]', ':[', ';*', ':$', ';-D']); // should return 1;
+// Note
+// In case of an empty array return 0. You will not be tested with invalid input (input will always be an array). Order of the face (eyes, nose, mouth) elements will always be the same.
+
+function count_smileys($arr){
+    $eyes=[':',';'];
+    $nose=['-','~'];
+    $smile=[')','D'];
+    $test=[];
+    $count=0;
+    foreach($arr as $str){
+        if(strlen($str)==3){
+            $test[]=in_array($str[0],$eyes);
+            $test[]=in_array($str[1],$nose);
+            $test[]=in_array($str[2],$smile);
+            in_array('',$test) ? : $count++;
+            $test=[];
+        } elseif(strlen($str)==2){
+            $test[]=in_array($str[0],$eyes);
+            $test[]=in_array($str[1],$smile);  
+            in_array('',$test) ? : $count++; 
+            $test=[];
+        }
+
+    }
+
+    return $count;
+}
+
+print_r(count_smileys([':)',':(',':D',':O',':;']));
+
+
+?>
