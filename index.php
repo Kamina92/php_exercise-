@@ -1028,19 +1028,265 @@
 
 // None of the arrays will be empty, so you don't have to worry about that!
 
-function removeEveryOther($array) {
-    $count=1;
-    foreach($array as &$el){
-        if($count>0 && $count%2!=0){
-            unset($array[$count]);
-        }
-        $count++;
+// function removeEveryOther($array) {
+//     $count=1;
+//     foreach($array as &$el){
+//         if($count>0 && $count%2!=0){
+//             unset($array[$count]);
+//         }
+//         $count++;
+//     }
+
+//     return $array;
+// }
+
+// removeEveryOther(["Keep", "Remove", "Keep", "Remove", "Keep"]);
+
+// Write simple .camelCase method (camel_case function in PHP, CamelCase in C# or camelCase in Java) for strings. All words must have their first letter capitalized without spaces.
+
+// For instance:
+
+// camel_case("hello case"); // => "HelloCase"
+// camel_case("camel case word"); // => "CamelCaseWord"
+// Don't forget to rate this kata! Thanks :)
+
+// function camel_case($s){
+
+//     $s=explode(' ',$s);
+//     foreach($s as &$word){
+//         $word=ucfirst($word);
+//     }
+    
+//     $s=implode('',$s);
+    
+//     return $s;
+
+// }
+
+// camel_case("hello case");
+
+// Write an algorithm that will identify valid IPv4 addresses in dot-decimal format. IPs should be considered valid if they consist of four octets, with values between 0 and 255, inclusive.
+
+// Valid inputs examples:
+// Examples of valid inputs:
+// 1.2.3.4
+// 123.45.67.89
+// Invalid input examples:
+// 1.2.3
+// 1.2.3.4.5
+// 123.456.78.90
+// 123.045.067.089
+// Notes:
+// Leading zeros (e.g. 01.02.03.04) are considered invalid
+// Inputs are guaranteed to be a single string
+
+// function isValidIP($str)
+// {
+//     $str=explode('.',$str);
+
+//     if(count($str)<4 || count($str)>4 ){
+//         return false;
+//     }else{
+//         foreach($str as $ip){
+//             if($ip<0||$ip>255||strlen($ip)>1 && $ip[0]==0||strlen($ip)>1 && $ip[0]==' '|| $ip[strlen($ip)-1]==' '|| !is_numeric($ip)){
+//                 return false;
+//             }
+//         }
+//     }
+
+//     return print_r('true');
+// }
+
+// isValidIP('1.2.3.4.5');
+
+
+
+
+// Implement a pseudo-encryption algorithm which given a string S and an integer N concatenates all the odd-indexed characters of S with all the even-indexed characters of S, this process should be repeated N times.
+
+// Examples:
+
+// encrypt("012345", 1)  =>  "135024"
+// encrypt("012345", 2)  =>  "135024"  ->  "304152"
+// encrypt("012345", 3)  =>  "135024"  ->  "304152"  ->  "012345"
+
+// encrypt("01234", 1)  =>  "13024"
+// encrypt("01234", 2)  =>  "13024"  ->  "32104"
+// encrypt("01234", 3)  =>  "13024"  ->  "32104"  ->  "20314"
+// Together with the encryption function, you should also implement a decryption function which reverses the process.
+
+// If the string S is an empty value or the integer N is not positive, return the first argument without changes.
+
+// function encrypt($text, $n) {
+
+//     $i=0;
+//     $len=strlen($text)-1;
+//     $final='';
+//     while($i<$n){
+//         for ($a=0; $a <=$len ; $a++) { 
+//             if($a>0 && $a%2!=0){
+//                 $final=$final.$text[$a];
+//             }
+//         }
+
+//         for ($a=0; $a <=$len ; $a++) { 
+
+//             if($a==0 || $a%2==0){
+                    
+//                 $final=$final.$text[$a];
+//             }
+
+//         }
+//         $i++;
+//         $text=$final;
+//         $final='';
+//     }
+
+
+//     return $text;
+// }
+
+// // encrypt("012345", 2);
+
+// function decrypt($text, $n) {
+
+//     $i=0;
+//     $len=strlen($text);
+//     $final='';
+
+//     while($i<$n){
+//         if($len%2!=0){
+//             $oddLen=round($len/2);
+//             $evenLen=$len-$oddLen;
+//             $odd=substr($text,0,$oddLen);
+//             $even=substr($text,$evenLen);
+//             $countOdd=0;
+//             $counEven=0;
+//             for ($a=0; $a <$len ; $a++) { 
+//                 if($a==0 || $a%2==0){
+//                     $final=$final.$even[$counEven];
+//                     $counEven++;
+//                 }elseif($a>0 && $a%2!=0){
+//                     $final=$final.$odd[$countOdd];
+//                     $countOdd++;
+//                 };  
+//             }
+
+    
+//         }elseif($len%2==0){
+//             $oddLen=$len/2;
+//             $evenLen=$len-$oddLen;
+//             $odd=substr($text,0,$oddLen);
+//             $even=substr($text,$evenLen);
+//             $countOdd=0;
+//             $counEven=0;
+//             for ($a=0; $a <$len ; $a++) { 
+//                 if($a==0 || $a%2==0){
+//                     $final=$final.$even[$counEven];
+//                     $counEven++;
+//                 }elseif($a>0 && $a%2!=0){
+//                     $final=$final.$odd[$countOdd];
+//                     $countOdd++;
+//                 };  
+//             }
+//         }
+        
+        
+//             $i++;
+//             $text=$final;
+//             $final='';
+//             $counEven=0;
+//             $countOdd=0;
+//     }
+
+//      print_r($text);
+// }
+
+// decrypt('hsi  etTi sats!',1);
+
+
+
+
+// Write a simple parser that will parse and run Deadfish.
+
+// Deadfish has 4 commands, each 1 character long:
+
+// i increments the value (initially 0)
+// d decrements the value
+// s squares the value
+// o outputs the value into the return array
+// Invalid characters should be ignored.
+
+// parse("iiisdoso") => [ 8, 64 ]
+
+// function parse($data) {
+//     $final=[];
+//     $len=strlen($data);
+//     $i=0;
+//     $val=0;
+//     while($i<$len){
+//         if($data[$i]=='i'){
+//             $val++;
+//         }elseif($data[$i]=='d'){
+//             $val--;
+//         }elseif($data[$i]=='s'){
+//             $val=pow($val,2);
+//         }elseif ($data[$i]=='o') {
+//             $final[]=$val;
+//         }
+//         $i++;
+//     }
+//     return $final;
+// }
+
+// print_r(parse('iiisdoso'));
+
+
+
+
+// John has invited some friends. His list is:
+
+// s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
+// Could you make a program that
+
+// makes this string uppercase
+// gives it sorted in alphabetical order by last name.
+// When the last names are the same, sort them by first name. Last name and first name of a guest come in the result between parentheses separated by a comma.
+
+// So the result of function meeting(s) will be:
+
+// "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+// It can happen that in two distinct families with the same family name two people have the same first name too.
+
+// Notes
+// You can see another examples in the "Sample tests".
+
+function meeting($s) {
+    $s=strtoupper($s);
+    $s=explode(';',$s);
+    $arr=[];
+    $final='';
+
+    foreach($s as &$person){
+        $person=explode(':',$person);
+    }
+    foreach($s as &$person){
+        $arr[]=['name'=>$person[0],'lastname'=>$person[1]];
     }
 
-    print_r($array);
-    return $array;
+    array_multisort(array_column($arr,'lastname'),$arr);
+
+    foreach($arr as &$person){
+        $final=$final."(".$person['lastname'].",".$person['name'].")";
+    }
+
+    return $final;
+    
 }
 
-removeEveryOther(["Keep", "Remove", "Keep", "Remove", "Keep"]);
+$s = "Fred:Corwill;Filippo:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
+
+meeting($s);
+
 
 ?>
